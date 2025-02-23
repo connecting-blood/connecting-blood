@@ -20,7 +20,7 @@ class DistrictsController extends Controller
         return $baseController->sendResponse($states, 'Unique states list');
 
     }
-    public function state($districtName)
+    public function show($districtName)
     {
         $baseController = new BaseController();
         // SELECT * FROM `districts` WHERE state = 'Andhra Pradesh';
