@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\BloodStorageUnitResource;
+use App\Models\BloodStock;
 use App\Models\BloodStorageUnit;
+use App\Models\BloodTypes;
 use AppConfig;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -17,9 +19,32 @@ class BloodStorageUnitController extends Controller
      */
     public function index(Request $request)
     {
+        $bloods = BloodTypes::distinct()->pluck('blood'); // Fetch distinct blood types
         $baseController = new BaseController();
-        return $baseController->sendResponse(BloodStorageUnit::paginate(AppConfig::$paginate['perPage']), '');
+
+        $bloodStorageUnits = BloodStorageUnit::paginate(AppConfig::$paginate['perPage']);
+        $modifiedBloodStorageUnits = $bloodStorageUnits->getCollection()->map(function ($unit) use ($bloods) {
+            $bloodStocks = BloodStock::where('bbu_id', $unit->id)
+                ->selectRaw('blood_type, SUM(units) as total_units')
+                ->groupBy('blood_type')
+                ->pluck('total_units', 'blood_type');
+
+            // Convert to array
+            $bloodsAvailable = $bloodStocks->toArray();
+
+            // Get total units across all blood types
+            $unit->total_units = array_sum($bloodsAvailable);
+            $unit->bloodsAvailable = $bloodsAvailable;
+
+            return $unit;
+        });
+
+        // Replace the modified collection in the paginator
+        $bloodStorageUnits->setCollection($modifiedBloodStorageUnits);
+
+        return $baseController->sendResponse($bloodStorageUnits, '');
     }
+
 
     /**
      * Show the form for creating a new resource.
