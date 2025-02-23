@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('blood_storage_units', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->integer('user_id');
             $table->string('name');
             $table->string('address');
-            $table->string('district_id');
+            $table->integer('district_id');
             $table->string('contact_person')->nullable();
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
