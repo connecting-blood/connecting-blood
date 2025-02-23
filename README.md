@@ -1,12 +1,12 @@
-# Laravel Project
+# Connecting Blood
 
 ## Introduction
 
-This Laravel project is designed to [briefly describe the purpose of the project]. Built using Laravel, it follows best coding practices to ensure maintainability, scalability, and security. This document will guide developers on how to set up, develop, and contribute to the project effectively.
+Connect to hospitals and blood-banks for your blood unit requirements
 
 ## Table of Contents
 
-- [Laravel Project](#laravel-project)
+- [Connecting Blood](#connecting-blood)
   - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
   - [Requirements](#requirements)
@@ -180,4 +180,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-For any questions, contact [[your-email@example.com](mailto:ashif@connectingblood.com)].
+For any questions, contact [[info@connectingblood.com](mailto:info@connectingblood.com)].
