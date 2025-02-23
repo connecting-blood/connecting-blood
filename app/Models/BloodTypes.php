@@ -9,4 +9,8 @@ class BloodTypes extends Model
 {
     /** @use HasFactory<\Database\Factories\BloodTypesFactory> */
     use HasFactory;
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }
