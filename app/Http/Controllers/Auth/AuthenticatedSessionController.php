@@ -35,14 +35,6 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
-    public function apiLogin(Request $request)
-    {
-        $validate = $request->validate([
-            // 'email' => 'required|sting',
-            'password' => 'required|sting|confirmed'
-        ]);
-        return;
-    }
 
     /**
      * Destroy an authenticated session.

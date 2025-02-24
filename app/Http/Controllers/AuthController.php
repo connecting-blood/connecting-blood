@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\GetUserByHeader;
 use App\Models\User;
 use App\Models\UserLoginAttempt;
@@ -9,6 +10,8 @@ use AppConfig;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\BaseController as BaseController;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rules\Password;
@@ -21,7 +24,6 @@ class AuthController extends Controller
         $fields = $request->validate([
             'email' => 'required|email:rfc,dns',
             'password' => 'required|min:8',
-            'password_confirmation' => 'required_with:password|same:password|min:6'
         ]);
 
         $user = User::where('email', $fields['email'])->first();
@@ -53,6 +55,9 @@ class AuthController extends Controller
 
         // Generate authentication token
         $token = $user->createToken('auth_token')->plainTextToken;
+        if ($request->fount) {
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
         return $baseController->sendResponse(
             [
                 'user' => $user,

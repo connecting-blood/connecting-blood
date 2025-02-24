@@ -9,7 +9,7 @@ use App\Http\Controllers\DistrictsController;
 use Illuminate\Support\Facades\Route;
 
 // Public API
-Route::post('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login'])->name('api.login');
 Route::post('new-user', [AuthController::class, 'newUser']);
 Route::resource('districts', DistrictsController::class);
 Route::get('bloods', [BloodTypesController::class, 'index']);
