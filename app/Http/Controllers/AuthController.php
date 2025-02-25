@@ -15,9 +15,23 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rules\Password;
-
 class AuthController extends Controller
 {
+    public function index(Request $request)
+    {
+        $user = $this->user($request);
+        $whoHasAccess = ['developer', 'admin', 'staff'];
+        $a = [];
+        foreach ($whoHasAccess as $key => $value) {
+            array_push($a, AppConfig::$userTypes[$value]);
+        }
+        // checking user has access;
+        if (in_array($user->type, $a, true)) {
+            return "yes";
+        } else {
+            return $a;
+        }
+    }
     public function login(Request $request)
     {
         $baseController = new BaseController();
@@ -55,9 +69,14 @@ class AuthController extends Controller
 
         // Generate authentication token
         $token = $user->createToken('auth_token')->plainTextToken;
-        if ($request->fount) {
-            return redirect()->intended(route('dashboard', absolute: false));
-        }
+        // if ($request->fount) {
+        //     return redirect()->intended(
+        //         route('dashboard', [
+        //             'user' => $user,
+        //             'token' => $token,
+        //         ])
+        //     );
+        // }
         return $baseController->sendResponse(
             [
                 'user' => $user,

@@ -12,7 +12,9 @@ import {
   Send,
   Settings2,
   SquareTerminal,
+  Users,
 } from "lucide-react"
+
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
 import { NavSecondary } from "@/components/nav-secondary"
@@ -26,7 +28,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { ScrollArea } from "./ui/scroll-area"
 
 const data = {
   user: {
@@ -36,23 +37,18 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      icon_text: "square-terminal",
+      title: "Users",
+      // url: "#",
+      icon: Users,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Approved",
+          url: "/dashboard/users/all",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
+          title: "All",
+          url: "/dashboard/users/all",
         },
       ],
     },
@@ -60,7 +56,6 @@ const data = {
       title: "Models",
       url: "#",
       icon: Bot,
-      icon_text: "bot",
       items: [
         {
           title: "Genesis",
@@ -80,7 +75,6 @@ const data = {
       title: "Documentation",
       url: "#",
       icon: BookOpen,
-      icon_text: "book-open",
       items: [
         {
           title: "Introduction",
@@ -104,7 +98,6 @@ const data = {
       title: "Settings",
       url: "#",
       icon: Settings2,
-      icon_text: "settings-2",
       items: [
         {
           title: "General",
@@ -130,13 +123,11 @@ const data = {
       title: "Support",
       url: "#",
       icon: LifeBuoy,
-      icon_text: "life-buoy"
     },
     {
       title: "Feedback",
       url: "#",
       icon: Send,
-      icon_text: "send"
     },
   ],
   projects: [
@@ -144,19 +135,16 @@ const data = {
       name: "Design Engineering",
       url: "#",
       icon: Frame,
-      icon_text: "frame"
     },
     {
       name: "Sales & Marketing",
       url: "#",
       icon: PieChart,
-      icon_text: "chart-pie"
     },
     {
       name: "Travel",
       url: "#",
       icon: Map,
-      icon_text: "map"
     },
   ],
 }
@@ -184,29 +172,11 @@ export function AppSidebar({ ...props }) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <ScrollArea>
-        <SidebarContent>
-          <NavMain items={data.navMain} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavProjects projects={data.projects} />
-          <NavSecondary items={data.navSecondary} className="mt-auto" />
-        </SidebarContent>
-      </ScrollArea>
+      <SidebarContent>
+        <NavMain items={data.navMain} />
+        <NavProjects projects={data.projects} />
+        <NavSecondary items={data.navSecondary} className="mt-auto" />
+      </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>

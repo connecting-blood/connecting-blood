@@ -3,66 +3,62 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Head, Link, useForm, usePage } from "@inertiajs/react"
+import { Head, Link, router, useForm, usePage } from "@inertiajs/react"
 import { Loader2 } from "lucide-react"
 import axios from "axios"
 import { Toaster } from "./ui/sonner"
 import { toast } from "sonner"
+import { useEffect, useState } from "react"
+import apiCall from "@/lib/apiCall"
+import localStorageItems from "@/lib/localStorageItems"
 export function LoginForm({
   className,
   onSubmit = () => null,
   ...props
 }) {
   const { appName } = usePage().props
-  const { data, setData, post, processing, errors, setError, reset, transform } = useForm({
+  const [processing, setProcessing] = useState(false);
+  const { data, setData, post, errors, setError, reset, transform } = useForm({
     email: 'ashif@connectingblood.com',
     password: 'password',
     fount: true,
   });
-
-  const submit = async (e) => {
-    console.log("first")
+  const submit = (e => {
+    setProcessing(true)
     e.preventDefault();
-
-    try {
-      const response = await axios.post('api/login', {
-        ...data
-      });
-
-      localStorage.setItem("token", response.data?.token)
-      localStorage.setItem("userType", JSON.stringify(response.data?.user))
-      window.location.href = route('dashboard');
-    } catch (error) {
-      toast.error(error.response?.data?.message || error.message)
-      setError(error.response?.data?.errors)
-    }
-  };
-  const submit_2 = (e) => {
-    e.preventDefault();
-    transform(d => d)
-    post(route('api.login'), {
-      preserveScroll: true,
-      
-      onSuccess: (response) => {
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("userType", JSON.stringify(response.user));
-        window.location.href = route('dashboard');
-      },
-      onError: (errors) => {
-        toast.error(errors?.message || "Login failed");
-      }
-    });
-  };
-
+    apiCall.post('login', data)
+      .then(response => {
+        localStorage.setItem(localStorageItems.token, response?.data?.data?.token)
+        router.visit('/dashboard')
+      })
+      .catch(errors => {
+        toast.error(errors.response?.data?.message || "Login failed");
+      })
+      .finally(() => {
+        setProcessing(false)
+      })
+  })
+  const getToken = () => {
+    setProcessing(true)
+    apiCall.get('profile')
+      .then(res => {
+        toast.success('Your Already Logged In.')
+      })
+      .finally(() => {
+        setProcessing(false)
+      })
+  }
+  useEffect(() => {
+    getToken()
+  }, [])
   return (
     <>
       <Head title="Login" />
       <Toaster />
-      {JSON.stringify(data)}
       <div className={cn("flex flex-col gap-6", className)} {...props}>
         <Card className="overflow-hidden">
           <CardContent className="grid p-0 md:grid-cols-2">
-            <form className="p-6 md:p-8" onSubmit={submit_2}>
+            <form className="p-6 md:p-8" onSubmit={submit}>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col items-center text-center">
                   <h1 className="text-2xl font-bold">Welcome back</h1>
