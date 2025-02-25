@@ -28,6 +28,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { ScrollArea } from "./ui/scroll-area"
 
 const data = {
   user: {
@@ -173,9 +174,11 @@ export function AppSidebar({ ...props }) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <ScrollArea>
+          <NavMain items={data.navMain} />
+          <NavProjects projects={data.projects} />
+          <NavSecondary items={data.navSecondary} className="mt-auto" />
+        </ScrollArea>
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
