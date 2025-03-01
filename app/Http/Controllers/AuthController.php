@@ -36,7 +36,7 @@ class AuthController extends Controller
     {
         $baseController = new BaseController();
         $fields = $request->validate([
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|email:rfc',
             'password' => 'required|min:8',
         ]);
 
@@ -101,7 +101,7 @@ class AuthController extends Controller
         $baseController = new BaseController();
         try {
             $request->validate([
-                'email' => 'required|unique:users,email|lowercase|email:rfc,dns',
+                'email' => 'required|unique:users,email|lowercase|email:rfc',
                 'name' => 'required|min:3',
                 'phone' => 'sometimes|digits:10|unique:users,phone',
                 'password' => [
@@ -143,7 +143,7 @@ class AuthController extends Controller
 
             // Validate request
             $validatedData = $request->validate([
-                'email' => 'sometimes|unique:users,email|lowercase|email:rfc,dns',
+                'email' => 'sometimes|unique:users,email|lowercase|email:rfc',
                 'name' => 'sometimes|min:3',
             ]);
 

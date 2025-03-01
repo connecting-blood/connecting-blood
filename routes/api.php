@@ -23,6 +23,7 @@ Route::post('register', [AuthController::class, 'newUser']);
 
 Route::apiResource('districts', DistrictsController::class)->only(['index', 'show']);
 Route::get('blood-types', [BloodTypesController::class, 'index']);
+Route::get('blood-types/types', [BloodTypesController::class, 'show']);
 Route::get('blood-storage-units', [BloodStorageUnitController::class, 'index']);
 Route::get('blood-stocks', [BloodStockController::class, 'index']);
 

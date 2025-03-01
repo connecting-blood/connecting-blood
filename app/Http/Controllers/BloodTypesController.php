@@ -14,11 +14,16 @@ class BloodTypesController extends Controller
      */
     public function index()
     {
-        return response()->json(
-            BloodTypes::paginate(
-                AppConfig::$paginate['perPage']
-            )
-        ); // Return all blood types as JSON
+        $baseController = new BaseController();
+        $blood = BloodTypes::all();
+        $response = [];
+        foreach ($blood as $bl) {
+            array_push($response, array_merge($bl->toArray(), [
+                "from" => json_decode($bl->from),
+                "to" => json_decode($bl->to),
+            ]));
+        }
+        return $baseController->sendResponse($response, 'Data Get Successfully');
     }
 
     /**
@@ -42,7 +47,9 @@ class BloodTypesController extends Controller
      */
     public function show(BloodTypes $bloodTypes)
     {
-        //
+        $bloods = BloodTypes::distinct()->pluck('blood'); // Fetch unique blood names
+        $baseController = new BaseController();
+        return $baseController->sendResponse($bloods, 'Unique blood list');
     }
 
     /**
