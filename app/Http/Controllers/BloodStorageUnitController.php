@@ -22,7 +22,7 @@ class BloodStorageUnitController extends Controller
         $bloods = BloodTypes::distinct()->pluck('blood'); // Fetch distinct blood types
         $baseController = new BaseController();
 
-        $bloodStorageUnits = BloodStorageUnit::paginate(AppConfig::$paginate['perPage']);
+        $bloodStorageUnits = BloodStorageUnit::paginate(config('app_config.perPage'));
         $modifiedBloodStorageUnits = $bloodStorageUnits->getCollection()->map(function ($unit) use ($bloods) {
             $bloodStocks = BloodStock::where('bbu_id', $unit->id)
                 ->selectRaw('blood_type, SUM(units) as total_units')
@@ -61,18 +61,14 @@ class BloodStorageUnitController extends Controller
     {
         $baseController = new BaseController();
         try {
-            $token = PersonalAccessToken::findToken($request->bearerToken());
-            if (!$token) {
-                return response()->json(['message' => 'Unauthorized'], 401);
-            }
-            $user = $token->tokenable;
+            $user = $request->user();
             $fields = $request->validate([
                 'name' => 'required|min:5',
                 'address' => 'required|min:5',
                 'district_id' => 'required|exists:districts,id',
                 'email' => 'sometimes|required|email:rfc,dns',
                 'phone' => 'sometimes|required|digits:10',
-                'category' => [Rule::in(array_keys(AppConfig::$BCUCategory)),],
+                'category' => [Rule::in(array_keys(config('app_config.BCUCategory'))),],
                 'lat' => 'required',
                 'long' => 'required',
                 'license_no' => 'nullable|string',
@@ -80,8 +76,8 @@ class BloodStorageUnitController extends Controller
                 'license_to' => 'required_with:license_no|after:tomorrow|after:license_from',
             ]);
             $accessTypes = [
-                AppConfig::$userTypes['developer'],
-                AppConfig::$userTypes['hospital'],
+                config('app_config.userTypes.developer'),
+                config('app_config.userTypes.hospital'),
             ];
             if (!in_array($user['type'], $accessTypes)) {
                 return $baseController->sendError('This ' . $user['type'] . ' don\'t have access to create Blood Storage Unit', $user->type, 422);
@@ -131,7 +127,7 @@ class BloodStorageUnitController extends Controller
                 'email' => 'sometimes|required|email:rfc,dns',
                 'parent_hospital_name' => 'sometimes|min:4',
                 'phone' => 'sometimes|required|digits:10',
-                'category' => [Rule::in(array_keys(AppConfig::$BCUCategory)),],
+                'category' => [Rule::in(array_keys(config('app_config.BCUCategory'))),],
                 'lat' => 'required',
                 'long' => 'required',
                 'license_no' => 'nullable|string',

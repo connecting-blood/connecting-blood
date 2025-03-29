@@ -15,7 +15,7 @@ class BloodStockController extends Controller
      */
     public function index()
     {
-        return BloodStock::paginate(AppConfig::$paginate['perPage']);
+        return BloodStock::paginate(config('app_config.perPage'));
     }
 
     /**

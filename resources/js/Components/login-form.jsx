@@ -22,22 +22,28 @@ export function LoginForm({
     email: 'ashif@connectingblood.com',
     password: 'password',
     fount: true,
+    remember: false,
   });
-  const submit = (e => {
-    setProcessing(true)
+  const submit = (e) => {
+    setProcessing(true);
     e.preventDefault();
-    apiCall.post('login', data)
-      .then(response => {
-        localStorage.setItem(localStorageItems.token, response?.data?.data?.token)
-        router.visit('/dashboard')
-      })
-      .catch(errors => {
-        toast.error(errors.response?.data?.message || "Login failed");
-      })
-      .finally(() => {
-        setProcessing(false)
-      })
-  })
+
+    post(route('login'), {
+      onFinish: () => reset('password'),
+    });
+    // e.preventDefault();
+    // apiCall
+    //   .post("login", data, { withCredentials: true }) // Ensure session authentication
+    //   .then(() => {
+    //     // router.visit("/dashboard"); // Redirect to dashboard
+    //   })
+    //   .catch((errors) => {
+    //     toast.error(errors.response?.data?.message || "Login failed");
+    //   })
+    //   .finally(() => {
+    //     setProcessing(false);
+    //   });
+  };
   const getToken = () => {
     setProcessing(true)
     apiCall.get('profile')

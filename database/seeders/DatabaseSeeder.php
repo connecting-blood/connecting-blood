@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'AshifSadiq',
             'email' => 'ashif@connectingblood.com',
-            'type' => AppConfig::$userTypes['developer']
+            'type' => config('app_config.userTypes.developer')
         ]);
+        User::factory()
+            ->count(100)
+            ->create();
     }
 }

@@ -16,7 +16,7 @@ class BloodStorageUnitResource extends JsonResource
     public function toArray(Request $request): array
     {
         return array_merge(parent::toArray($request), [
-            'category' => AppConfig::$BCUCategory[$request->category]
+            'category' => config('app_config.BCUCategory.' . $request->category),
         ]);
     }
 }

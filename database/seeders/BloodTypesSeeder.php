@@ -15,7 +15,7 @@ class BloodTypesSeeder extends Seeder
     public function run(): void
     {
         //
-        $bloodTypes = AppConfig::$BloodTypes;
+        $bloodTypes = config('app_config.BloodTypes');
         foreach ($bloodTypes as $blood => $value) {
             BloodTypes::create([
                 'blood' => $blood,

@@ -7,11 +7,14 @@ use App\Http\Resources\GetUserByHeader;
 use App\Models\User;
 use App\Models\UserLoginAttempt;
 use AppConfig;
+use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\BaseController as BaseController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use Inertia\Response;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rules\Password;
@@ -23,7 +26,7 @@ class AuthController extends Controller
         $whoHasAccess = ['developer', 'admin', 'staff'];
         $a = [];
         foreach ($whoHasAccess as $key => $value) {
-            array_push($a, AppConfig::$userTypes[$value]);
+            array_push($a, config('app_config.userTypes.' . $value));
         }
         // checking user has access;
         if (in_array($user->type, $a, true)) {
@@ -31,6 +34,13 @@ class AuthController extends Controller
         } else {
             return $a;
         }
+    }
+    public function create(): Response
+    {
+        return Inertia::render('Auth/Login', [
+            'canResetPassword' => Route::has('password.request'),
+            'status' => session('status'),
+        ]);
     }
     public function login(Request $request)
     {
@@ -42,59 +52,24 @@ class AuthController extends Controller
 
         $user = User::where('email', $fields['email'])->first();
 
-        if ($user) {
-            UserLoginAttempt::whereDate('created_at', '<', today())
-                ->delete();
-
-            $userAttempt = $userAttempt = UserLoginAttempt::where('user_id', $user['id'])
-                ->whereDate('created_at', today()) // Check only today's records
-                ->first();
-            if ($userAttempt) {
-                $userAttempt = $userAttempt['attempt'];
-                if ($userAttempt < AppConfig::$LoginAttempt)
-                    UserLoginAttempt::where('user_id', 1)->update(['attempt' => ($userAttempt + 1)]);
-                else
-                    return $baseController->sendError('Too Many Requests', [], 429);
-            } else {
-                // Create a new record if not exists
-                UserLoginAttempt::create([
-                    'user_id' => $user['id'],
-                ]);
-            }
-        }
-
         if (!$user || !Hash::check($fields['password'], $user->password)) {
             return $baseController->sendError('Invalid credentials', [], 401);
         }
 
-        // Generate authentication token
+        // Check if the request is from an API (mobile app)
         $token = $user->createToken('auth_token')->plainTextToken;
-        // if ($request->fount) {
-        //     return redirect()->intended(
-        //         route('dashboard', [
-        //             'user' => $user,
-        //             'token' => $token,
-        //         ])
-        //     );
-        // }
         return $baseController->sendResponse(
             [
                 'user' => $user,
                 'token' => $token,
-                'attempt_left' => AppConfig::$LoginAttempt - ($userAttempt + 1)
             ],
             'Login Successfully'
         );
     }
+
     public function user(Request $request)
     {
-        $baseController = new BaseController();
-        $token = PersonalAccessToken::findToken($request->bearerToken());
-        if (!$token) {
-            return $baseController->sendError('Unauthorized', [], 401);
-        }
-        $user = $token->tokenable;
-        return $user;
+        return $request->user();
     }
     public function newUser(Request $request)
     {
@@ -133,12 +108,7 @@ class AuthController extends Controller
 
         try {
             // Get user from token
-            $token = PersonalAccessToken::findToken($request->bearerToken());
-            if (!$token || !$token->tokenable) {
-                return $baseController->sendError('Unauthorized', [], 401);
-            }
-
-            $user = $token->tokenable;
+            $user = $request->user();
             $UpdateUser = User::find($user->id);
 
             // Validate request
