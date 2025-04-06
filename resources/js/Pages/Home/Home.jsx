@@ -7,7 +7,8 @@ const Home = () => {
             <div className="lg:w-10/12 w-11/12 space-y-10 py-10">
                 <div className="grid lg:grid-cols-3 grid-rows-1 gap-4">
                     <div className='flex flex-col justify-center items-start space-y-7 max-w-full lg:col-span-2'>
-                        <h1 className='text-[#71102F] text-3xl font-bold max-w-full' >Revolutionizing Blood Donation through Technology</h1>
+                        <div className='text-[#71102F] text-3xl font-bold max-w-full'>Revolutionizing</div>
+                        <h1 className='text-[#71102F] text-2xl font-bold max-w-full' > Blood Donation through Technology</h1>
                         <p className='text-base text-[#171A1F]'>Connecting Blood simplifies donor management, ensures secure transactions with blockchain, and enhances collaboration with hospitals and blood banks. Ready to transform blood donation?</p>
                         <button className='bg-[#009230] text-white px-5 py-2 rounded-lg text-base' >Help Save Lives - Donate Blood Today</button>
                         <button className='bg-[#F2F2FD] text-[#2C35E0] px-5 py-2 rounded-full text-base' >Book an Appointment</button>
