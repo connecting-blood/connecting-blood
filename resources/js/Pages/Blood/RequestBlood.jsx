@@ -1,4 +1,4 @@
-import RequestBloodForm from '@/Components/Request-Blood-Form/Request-Blood-Form'
+import RequestBloodForm from '@/components/Request-Blood-Form/Request-Blood-Form'
 import React from 'react'
 
 const RequestBlood = (props) => {
