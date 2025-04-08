@@ -12,14 +12,14 @@ const Home = () => {
                         <div className='text-primary text-3xl font-bold max-w-full'>Revolutionizing</div>
                         <h1 className='text-primary text-2xl font-bold max-w-full' > Blood Donation through Technology</h1>
                         <p className='text-base text-[#171A1F]'>Connecting Blood simplifies donor management, ensures secure transactions with blockchain, and enhances collaboration with hospitals and blood banks. Ready to transform blood donation?</p>
-                        <button className='bg-secondary text-white px-5 py-2 rounded-lg text-base' >Help Save Lives - Donate Blood Today</button>
+                        <button className='bg-[#009230] text-white px-5 py-2 rounded-lg text-base' >Help Save Lives - Donate Blood Today</button>
                         <button className='bg-secondary/35 text-secondary-foreground px-5 py-2 rounded-full text-base' >Book an Appointment</button>
                     </div>
                     <div className='flex justify-center lg:justify-end items-center'>
-                        <img src='/assets/website/webp/blood-donate.jpeg' className='rounded-xl w-full' />
+                        <img src='/assets/website/svg/human_heart.svg' className='rounded-xl w-full' />
                     </div>
                 </div>
-                <div className="grid lg:grid-cols-2 grid-rows-1 gap-4 bg-[#F2F2FD] p-10 rounded-xl">
+                <div className="grid lg:grid-cols-2 grid-rows-1 gap-4 bg-[#CED0F8] p-10 rounded-xl">
                     <div></div>
                     <div className='flex flex-col justify-center items-start space-y-7 max-w-full'>
                         <h2 className='text-primary text-3xl font-bold max-w-full' >Key Features</h2>
@@ -71,7 +71,7 @@ const Home = () => {
                     </div>
                 </div>
                 <h2 className='text-primary text-3xl font-bold max-w-full text-center'>What Our Clients Say</h2>
-                <div className="grid lg:grid-cols-2 p-10 lg:p-0 grid-rows-1 gap-4 bg-[#F2F2FD] rounded-xl">
+                <div className="grid lg:grid-cols-2 p-10 lg:p-0 grid-rows-1 gap-4 bg-[#CED0F8] rounded-xl">
                     <div className='flex justify-center lg:justify-end items-center'>
                         <img src='/assets/website/svg/men.svg' className='rounded-xl' />
                     </div>
