@@ -22,7 +22,7 @@ use Inertia\Inertia;
 
 
 Route::inertia('/', 'Home/Home')->name('home');
-Route::inertia('/about-us', 'AboutUs/AboutUs')->name('AboutUs');
+Route::inertia('/about-us', 'Home/Home')->name('AboutUs');
 Route::inertia('/how-it-works', 'Home/Home')->name('howItWorks');
 Route::inertia('/donor', 'Home/Home')->name('donor');
 Route::inertia('/seeker', 'Home/Home')->name('seeker');
