@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "php":"php artisan serve"
     },
     "devDependencies": {
         "@headlessui/react": "^2.0.0",
