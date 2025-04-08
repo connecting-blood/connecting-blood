@@ -9,11 +9,11 @@ const Home = () => {
             <div className="lg:w-10/12 w-11/12 space-y-10 py-10">
                 <div className="grid lg:grid-cols-3 grid-rows-1 gap-4">
                     <div className='flex flex-col justify-center items-start space-y-7 max-w-full lg:col-span-2'>
-                        <div className='text-[#71102F] text-3xl font-bold max-w-full'>Revolutionizing</div>
-                        <h1 className='text-[#71102F] text-2xl font-bold max-w-full' > Blood Donation through Technology</h1>
+                        <div className='text-primary text-3xl font-bold max-w-full'>Revolutionizing</div>
+                        <h1 className='text-primary text-2xl font-bold max-w-full' > Blood Donation through Technology</h1>
                         <p className='text-base text-[#171A1F]'>Connecting Blood simplifies donor management, ensures secure transactions with blockchain, and enhances collaboration with hospitals and blood banks. Ready to transform blood donation?</p>
-                        <button className='bg-[#009230] text-white px-5 py-2 rounded-lg text-base' >Help Save Lives - Donate Blood Today</button>
-                        <button className='bg-[#F2F2FD] text-[#2C35E0] px-5 py-2 rounded-full text-base' >Book an Appointment</button>
+                        <button className='bg-secondary text-white px-5 py-2 rounded-lg text-base' >Help Save Lives - Donate Blood Today</button>
+                        <button className='bg-secondary/35 text-secondary-foreground px-5 py-2 rounded-full text-base' >Book an Appointment</button>
                     </div>
                     <div className='flex justify-center lg:justify-end items-center'>
                         <img src='/storage/website/webp/blood-donate.jpeg' className='rounded-xl w-full' />
@@ -22,13 +22,13 @@ const Home = () => {
                 <div className="grid lg:grid-cols-2 grid-rows-1 gap-4 bg-[#F2F2FD] p-10 rounded-xl">
                     <div></div>
                     <div className='flex flex-col justify-center items-start space-y-7 max-w-full'>
-                        <h2 className='text-[#71102F] text-3xl font-bold max-w-full' >Key Features</h2>
+                        <h2 className='text-primary text-3xl font-bold max-w-full' >Key Features</h2>
                         <p className='text-base text-[#171A1F]'>Connecting Blood leverages advanced technology to seamlessly match blood donors with seekers, ensuring fast, secure, and reliable blood availability through smart tracking and real-time collaboration.</p>
                     </div>
                 </div>
                 <div className="grid lg:grid-cols-2 p-10 lg:p-0 grid-rows-1 gap-4 bg-transparent rounded-xl">
                     <div className='flex flex-col justify-center items-start space-y-7 max-w-full'>
-                        <h2 className='text-[#71102F] text-3xl font-bold max-w-full' >Find A Match</h2>
+                        <h2 className='text-primary text-3xl font-bold max-w-full' >Find A Match</h2>
                         <p className='text-base text-[#171A1F]'>A smart search tool that quickly locates nearby blood donors based on location, blood type, and urgency, ensuring timely and life-saving connections.</p>
                         <form className="flex items-center w-full lg:w-1/2">
                             <div className="relative w-full">
@@ -38,8 +38,9 @@ const Home = () => {
                                     </svg>
                                 </div>
                                 <input type="text" id="voice-search"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#636AE8] focus:border-[#636AE8] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#636AE8] dark:focus:border-[#636AE8] ps-10"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-ring focus:border-ring block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ps-10"
                                     placeholder="Search" required
+                                    autocomplete="off"
                                 />
                             </div>
                         </form>
@@ -51,7 +52,7 @@ const Home = () => {
                                         type="radio"
                                         value=""
                                         name="request-type"
-                                        className="w-4 h-4 text-[#636AE8] bg-gray-100 border-gray-300 focus:ring-[#636AE8] dark:focus:ring-[#636AE8] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        className="w-4 h-4 text-ring bg-gray-100 border-gray-300 focus:ring-ring dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                         defaultChecked={index === 0}
                                     />
                                     <label
@@ -69,7 +70,7 @@ const Home = () => {
                         <img src='/storage/website/svg/women.svg' className='rounded-xl' />
                     </div>
                 </div>
-                <h2 className='text-[#71102F] text-3xl font-bold max-w-full text-center'>What Our Clients Say</h2>
+                <h2 className='text-primary text-3xl font-bold max-w-full text-center'>What Our Clients Say</h2>
                 <div className="grid lg:grid-cols-2 p-10 lg:p-0 grid-rows-1 gap-4 bg-[#F2F2FD] rounded-xl">
                     <div className='flex justify-center lg:justify-end items-center'>
                         <img src='/storage/website/svg/men.svg' className='rounded-xl' />
