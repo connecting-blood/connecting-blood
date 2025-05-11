@@ -1,10 +1,8 @@
-import Footer from '@/components/Footer/Footer'
-import Navbar from '@/components/Navbar/Navbar'
+import UserLayout from '@/Layouts/UserLayout'
 import React from 'react'
 
 const Home = () => {
-    return (<>
-        <Navbar />
+    return (<UserLayout>
         <div className="flex justify-center items-center">
             <div className="lg:w-10/12 w-11/12 space-y-10 py-10">
                 <div className="grid lg:grid-cols-3 grid-rows-1 gap-4">
@@ -86,8 +84,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
-        <Footer />
-    </>
+    </UserLayout>
     )
 }
 
