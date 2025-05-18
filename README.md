@@ -21,7 +21,7 @@ Connect to hospitals and blood-banks for your blood unit requirements
   - [Collaboration Guidelines](#collaboration-guidelines)
   - [License](#license)
 
-## Requirements
+## Requirements needed for this project
 
 -   PHP >= 8.1
 -   Laravel >= 10
