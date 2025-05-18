@@ -20,8 +20,8 @@ use Inertia\Inertia;
     // ]);
 // })->name('home');
 
-
-Route::inertia('/', 'Home/Home')->name('home');
+Route::inertia('/', 'LandingPage/LandingPage')->name('home');
+Route::inertia('/home', 'Home/Home')->name('home');
 Route::inertia('/about-us', 'AboutUs/AboutUs')->name('AboutUs');
 Route::inertia('/how-it-works', 'HowItWorks/HowItWorks')->name('howItWorks');
 Route::inertia('/donor', 'Home/Home')->name('donor');
