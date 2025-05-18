@@ -1,13 +1,14 @@
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
+import { Files } from 'lucide-react'
 import React from 'react'
 
-const UserLayout = ({ children }) => {
+const UserLayout = ({ children,hideFooter=false}) => {
     return (
         <>
             <Navbar />
             {children}
-            <Footer />
+            {!hideFooter? <Footer />:null}
         </>
     )
 }
