@@ -32,7 +32,7 @@ Route::get('/seeker', function () {
 })->name('seeker');
 // Route::inertia('/donor', 'Donor/Donor')->name('donor');
 // Route::inertia('/seeker', 'Home/Home')->name('seeker');
-Route::inertia('/contact-us', 'Home/Home')->name('contactUs');
+Route::inertia('/contact-us', 'ContactUs/ContactUs')->name('contactUs');
 Route::inertia('/dashboard/users/all', 'Users/Users')->name('users.all');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('/dashboard', 'Dashboard')->name('dashboard');

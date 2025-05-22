@@ -3,11 +3,11 @@ import Navbar from '@/components/Navbar/Navbar'
 import { Files } from 'lucide-react'
 import React from 'react'
 
-const UserLayout = ({ children,hideFooter=false}) => {
+const UserLayout = ({ children,className,hideFooter=false}) => {
     return (
         <>
             <Navbar />
-            {children}
+            <div className={className} >{children}</div>
             {!hideFooter? <Footer />:null}
         </>
     )

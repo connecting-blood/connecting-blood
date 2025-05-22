@@ -23,7 +23,7 @@ const Navbar = ({
   }
   return (
     <nav className={cn("bg-white border-gray-200 dark:bg-gray-900", contentContainerClass)}>
-      <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-2">
+      <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto px-2">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/assets/Logo.webp" className="h-8" alt="Flowbite Logo" />
           {/* <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">{import.meta.env.VITE_APP_NAME}</span> */}
@@ -43,14 +43,14 @@ const Navbar = ({
             <button onClick={toggleMenu} className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
               <X size={25} color='#000' />
             </button>
-            <ul className="w-full font-medium flex flex-col mt-5 p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:items-center items-end space-y-3 md:space-y-0 px-5">
+            <ul className="w-full font-medium flex flex-col mt-5 p-0 md:flex-row md:space-x-6 rtl:space-x-reverse md:mt-0 md:border-0 md:items-center items-end space-y-3 md:space-y-0 px-5">
               {navLinks.map((link, index) => (
                 <li key={index.toString()}>
-                  <Link href={route(link.href)} className={cn("block md:p-0", (window.location.href == route(link.href) ? 'text-black' : 'text-black'), navLinksClass)} >{link.name}</Link>
+                  <Link href={route(link.href)} className={cn("block md:p-0", (window.location.href == route(link.href) ? 'text-primary' : 'text-primaryP300'), navLinksClass)} >{link.name}</Link>
                 </li>
               ))}
               <div className='flex flex-col md:flex-row md:items-center items-end md:space-x-4 space-y-3 md:space-y-0' >
-                <Link href={route('home')} className={cn("", navLinksClass)} >Login</Link>
+                <Link href={route('login')} className={cn((window.location.href == route('login') ? 'text-primary' : 'text-primaryP300'), navLinksClass)} >Login</Link>
                 <Button className="w-fit">Sign Up</Button>
               </div>
             </ul>
