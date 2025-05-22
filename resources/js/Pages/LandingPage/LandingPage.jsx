@@ -59,7 +59,11 @@ const LandingPage = () => {
         }}
       >
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl w-full text-black">
+        <div
+          style={{
+            background: "radial-gradient(circle,rgba(0, 251, 255, 0.05) -10%, rgba(245,245,245,1) 75%)",
+          }}
+          className="relative z-10 flex flex-col items-center text-center px-4 w-full text-black h-full justify-center align-middle">
           <h1 className="text-black text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
             The world needs people <br /> who save lives
           </h1>
