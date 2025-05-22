@@ -1,31 +1,37 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // Route::get('/', function () {
-    // return Inertia::render('Home/Home', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    // ]);
-    // return Inertia::render('Blood/RequestBlood', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    // ]);
+// return Inertia::render('Home/Home', [
+//     'canLogin' => Route::has('login'),
+//     'canRegister' => Route::has('register'),
+//     'laravelVersion' => Application::VERSION,
+//     'phpVersion' => PHP_VERSION,
+// ]);
+// return Inertia::render('Blood/RequestBlood', [
+//     'canLogin' => Route::has('login'),
+//     'canRegister' => Route::has('register'),
+//     'laravelVersion' => Application::VERSION,
+//     'phpVersion' => PHP_VERSION,
+// ]);
 // })->name('home');
 
-Route::inertia('/', 'LandingPage/LandingPage')->name('home');
+Route::inertia('/', 'LandingPage/LandingPage')->name('root');
 Route::inertia('/home', 'Home/Home')->name('home');
 Route::inertia('/about-us', 'AboutUs/AboutUs')->name('AboutUs');
 Route::inertia('/how-it-works', 'HowItWorks/HowItWorks')->name('howItWorks');
-Route::inertia('/donor', 'Donor/Donor')->name('donor');
-Route::inertia('/seeker', 'Home/Home')->name('seeker');
+Route::get('/donor', function () {
+    return redirect()->route('root');
+})->name('donor');
+
+Route::get('/seeker', function () {
+    return redirect()->route('root');
+})->name('seeker');
+// Route::inertia('/donor', 'Donor/Donor')->name('donor');
+// Route::inertia('/seeker', 'Home/Home')->name('seeker');
 Route::inertia('/contact-us', 'Home/Home')->name('contactUs');
 Route::inertia('/dashboard/users/all', 'Users/Users')->name('users.all');
 Route::middleware(['auth', 'verified'])->group(function () {
