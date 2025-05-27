@@ -19,8 +19,8 @@ export function LoginForm({
   const { appName } = usePage().props
   const [processing, setProcessing] = useState(false);
   const { data, setData, post, errors, setError, reset, transform } = useForm({
-    email: 'ashif@connectingblood.com',
-    password: 'password',
+    email: '',
+    password: '',
     fount: true,
     remember: false,
   });
@@ -64,7 +64,7 @@ export function LoginForm({
       <div className={cn("flex flex-col gap-6", className)} {...props}>
         <Card className="overflow-hidden">
           <CardContent className="grid p-0 md:grid-cols-2">
-            <form className="p-6 md:p-8" onSubmit={submit}>
+            <form autoComplete="off" className="p-6 md:p-8" onSubmit={submit}>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col items-center text-center">
                   <h1 className="text-2xl font-bold">Welcome back</h1>
@@ -74,7 +74,7 @@ export function LoginForm({
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input value={data.email} onChange={e => setData('email', e.target.value)} id="email" type="email" placeholder="m@example.com" />
+                  <Input value={data.email} onChange={e => setData('email', e.target.value)} id="email" type="email" placeholder="cb@example.com" />
                   {Array.isArray(errors.email) && errors.email.map((kkk) => {
                     return <span className="text-sm text-red-600" >{kkk}</span>
                   })}

@@ -31,7 +31,7 @@ import {
 const data = {
   teams: [
     {
-      name: "Acme Inc",
+      name: import.meta.env.VITE_APP_NAME,
       logo: Command,
       plan: "Enterprise",
     },
