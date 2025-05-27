@@ -28,7 +28,7 @@ export default function UpdateProfileInformation({
         <section className={className}>
             <header>
                 <h2 className="text-lg font-medium text-gray-900">
-                    Profile Information
+                    {import.meta.env.VITE_APP_NAME}
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-600">
