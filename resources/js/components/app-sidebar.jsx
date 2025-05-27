@@ -6,6 +6,7 @@ import {
   Bot,
   Command,
   Frame,
+  LayoutDashboard,
   LifeBuoy,
   Map,
   PieChart,
@@ -38,18 +39,19 @@ const data = {
   },
   navMain: [
     {
-      title: "Users",
-      // url: "#",
-      icon: Users,
+      title: "Dashboard",
+      url: route('dashboard'),
+      icon: LayoutDashboard,
       isActive: true,
+    },
+    {
+      title: "Users",
+      url: route("users"),
+      icon: Users,
       items: [
         {
           title: "Approved",
-          url: "/dashboard/users/all",
-        },
-        {
-          title: "All",
-          url: "/dashboard/users/all",
+          url: route("users.approved"),
         },
       ],
     },

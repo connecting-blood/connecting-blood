@@ -23,7 +23,7 @@ const Navbar = ({
   }
   return (
     <nav className={cn("bg-white border-gray-200 dark:bg-gray-900", contentContainerClass)}>
-      <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto px-2">
+      <div className="lg:w-10/12 w-11/12 flex flex-wrap items-center justify-between mx-auto">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/assets/Logo.webp" className="h-8" alt="Flowbite Logo" />
           {/* <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">{import.meta.env.VITE_APP_NAME}</span> */}

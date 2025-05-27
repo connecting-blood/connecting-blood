@@ -57,7 +57,7 @@
         --chart-4: hsl(43 74% 66%);
         --chart-5: hsl(27 87% 67%);
         --sidebar-background: var(--neutrals);
-        --sidebar-foreground: var(--neutralsN600);
+        --sidebar-foreground: var(--primaryP900);
         --sidebar-primary: var(--neutralsN900);
         --sidebar-primary-foreground: var(--neutrals);
         --sidebar-accent: var(--neutralsN500_O);

@@ -22,8 +22,5 @@ class DatabaseSeeder extends Seeder
             'email' => 'ashif@connectingblood.com',
             'type' => config('app_config.userTypes.developer')
         ]);
-        User::factory()
-            ->count(100)
-            ->create();
     }
 }

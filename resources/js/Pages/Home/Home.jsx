@@ -9,7 +9,7 @@ const Home = () => {
         <div className="flex justify-center items-center">
             <div className="lg:w-10/12 w-11/12 space-y-10 py-10">
                 <div className="grid lg:grid-cols-3 grid-rows-1 gap-4">
-                    <div className='flex flex-col justify-center items-start space-y-7 max-w-full lg:col-span-2'>
+                    <div className='flex flex-col justify-center items-start space-y-4 max-w-full lg:col-span-2'>
                         <h1 className='text-2xl font-bold max-w-full' > Revolutionizing Blood donation<br />  through Technology</h1>
                         <p className='text-base text-textBlack'>Connecting Blood simplifies donor management, ensures secure transactions with blockchain, and enhances collaboration with hospitals and blood banks. Ready to transform blood donation?</p>
                         <Button>Help Save Lives - Donate Blood Today</Button>
@@ -19,7 +19,7 @@ const Home = () => {
                         <img src='/assets/website/svg/human_heart.svg' className='rounded-xl w-full' />
                     </div>
                 </div>
-                <div className="grid lg:grid-cols-2 grid-rows-1 gap-4 bg-neutrals p-10 rounded-xl">
+                <div className="grid lg:grid-cols-2 grid-rows-1 gap-4 bg-neutrals rounded-xl">
                     <div></div>
                     <div className='flex flex-col justify-center items-start space-y-7 max-w-full'>
                         <h2 className='text-3xl font-bold max-w-full' >Key Features</h2>

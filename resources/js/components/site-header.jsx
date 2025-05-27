@@ -12,6 +12,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { useSidebar } from "@/components/ui/sidebar"
+import React from 'react'
+import { Link } from "@inertiajs/react"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
@@ -27,13 +29,25 @@ export function SiteHeader() {
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">
-                Building Your Application
+              <BreadcrumbLink href={route('dashboard')}>
+                {import.meta.env.VITE_APP_NAME}
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+              {window.location.pathname
+                .split('/')
+                .filter(path => path.length > 0)
+                .map((path, i, arr) => {
+                  const href = '/' + arr.slice(0, i + 1).join('/');
+                  return (
+                    <React.Fragment key={i}>
+                      <BreadcrumbSeparator className="hidden md:block" />
+                      <Link href={href}>
+                        <BreadcrumbPage className="capitalize">{path}</BreadcrumbPage>
+                      </Link>
+                    </React.Fragment>
+                  );
+                })}
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
