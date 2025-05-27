@@ -1,0 +1,1 @@
+import{j as e}from"./app-CYx8LoQj.js";import{B as o}from"./createLucideIcon-BORTyvd6.js";const n=()=>e.jsx("div",{className:"w-full bg-neutralsN500_O flex justify-center",children:e.jsxs("div",{className:"lg:w-10/12 w-11/12 mx-auto py-2 space-x-5",children:[e.jsx(o,{children:"Become a Donor"}),e.jsx(o,{children:"Find Blood Now"})]})});export{n as B};

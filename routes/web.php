@@ -18,7 +18,10 @@ use Inertia\Inertia;
 //     'phpVersion' => PHP_VERSION,
 // ]);
 // })->name('home');
-Route::middleware(['auth', 'verified'])->group(function () {
+// Route::get('/', function () {
+//     return response()->json(['env' => config('app.env')]);
+// });
+Route::middleware((config('app.env') == 'production') ? [] : ['auth', 'verified'])->group(function () {
     Route::inertia('/', 'LandingPage/LandingPage')->name('root');
     Route::inertia('/home', 'Home/Home')->name('home');
     Route::inertia('/about-us', 'AboutUs/AboutUs')->name('AboutUs');
@@ -26,7 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/donor', function () {
         return redirect()->route('root');
     })->name('donor');
-    
+
     Route::get('/seeker', function () {
         return redirect()->route('root');
     })->name('seeker');
