@@ -82,9 +82,9 @@ export function LoginForm({
                 <div className="grid gap-2">
                   <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
-                    <a href="#" className="ml-auto text-sm underline-offset-2 hover:underline">
+                    <Link href={route('password.request')} className="ml-auto text-sm underline-offset-2 hover:underline">
                       Forgot your password?
-                    </a>
+                    </Link>
                   </div>
                   <Input value={data.password} onChange={e => setData('password', e.target.value)} id="password" type="password" />
                   {Array.isArray(errors.password) && errors.password.map((kkk) => {

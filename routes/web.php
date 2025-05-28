@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -40,7 +41,7 @@ Route::middleware((config('app.env') == 'production') ? [] : ['auth', 'verified'
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('/dashboard', 'Dashboard')->name('dashboard');
-    Route::inertia('/users', 'Users/Users')->name('users');
+    Route::get('/users', [UserController::class, 'authIndex'])->name('users');
     Route::inertia('/users/approved', 'Users/Users')->name('users.approved');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

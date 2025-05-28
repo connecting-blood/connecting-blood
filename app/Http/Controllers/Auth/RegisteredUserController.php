@@ -20,6 +20,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
+        if ((config('app.env') != 'production')) {
+            exit;
+        }
         return Inertia::render('Auth/Register');
     }
 
