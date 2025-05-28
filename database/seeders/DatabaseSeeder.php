@@ -20,12 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'ashif@connectingblood.com',
             'type'  => config('app_config.userTypes.developer'),
         ]);
-        $accounts = ["anto@connectingblood.com",
-            "lavanya@connectingblood.com",
-            "magitha@connectingblood.com",
-            "pallavi@connectingblood.com",
-            "sahid@connectingblood.com"];
-        foreach ($accounts as $key => $value) {
+        foreach (config("app_config.defaultEmployees") as $key => $value) {
             User::factory()->create([
                 'name'  => $value,
                 'email' => $value,
