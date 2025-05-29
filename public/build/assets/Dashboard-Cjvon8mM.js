@@ -1,0 +1,1 @@
+import{j as r}from"./app-CBTv6lwp.js";import{A as t}from"./AuthenticatedLayout-xaCizYUD.js";import"./label-DUeshz74.js";import"./createLucideIcon-C0swgoXD.js";import"./index-BVGM_Eng.js";import"./index-CKKq6fmV.js";import"./x-Cdrk70e6.js";function u(o){return r.jsx(t,{children:"Dashboard"})}export{u as default};

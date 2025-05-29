@@ -1,0 +1,1 @@
+import{j as o}from"./app-CBTv6lwp.js";import{U as r}from"./UserLayout-CPg6t4TH.js";import"./createLucideIcon-C0swgoXD.js";import"./Navbar-DdwANasN.js";import"./x-Cdrk70e6.js";const e=()=>o.jsx(r,{children:"Donor"});export{e as default};
